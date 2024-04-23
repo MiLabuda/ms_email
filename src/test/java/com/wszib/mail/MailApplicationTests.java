@@ -1,10 +1,10 @@
-package com.tyreshop24.tyreshop24;
+package com.wszib.mail;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Tyreshop24ApplicationTests {
+class MailApplicationTests {
 
 	@Test
 	void contextLoads() {

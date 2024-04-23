@@ -1,13 +1,13 @@
-package com.tyreshop24.tyreshop24;
+package com.wszib.mail;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Tyreshop24Application {
+public class MailApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Tyreshop24Application.class, args);
+		SpringApplication.run(MailApplication.class, args);
 	}
 
 }
