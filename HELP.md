@@ -15,7 +15,7 @@ For further reference, please consider the following sections:
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.2.5/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
 * [Docker Compose Support](https://docs.spring.io/spring-boot/docs/3.2.5/reference/htmlsingle/index.html#features.docker-compose)
 * [JDBC API](https://docs.spring.io/spring-boot/docs/3.2.5/reference/htmlsingle/index.html#data.sql)
-* [Java Mail Sender](https://docs.spring.io/spring-boot/docs/3.2.5/reference/htmlsingle/index.html#io.email)
+* [Java Mail Sender](https://docs.spring.io/spring-boot/docs/3.2.5/reference/htmlsingle/index.html#io.mail)
 
 ### Guides
 The following guides illustrate how to use some features concretely:
