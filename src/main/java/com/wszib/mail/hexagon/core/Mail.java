@@ -15,7 +15,6 @@ public class Mail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String ownerRef;
     private String emailFrom;
     private String emailTo;
     private String subject;
