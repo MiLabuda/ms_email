@@ -1,7 +1,6 @@
 package com.wszib.mail.hexagon.core;
 
 
-import com.wszib.mail.adapters.driver.EMailType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -22,19 +21,22 @@ class TemplateServiceImpl {
         String url = mail.getBaseUrl() + "/savePassword?token=" + mail.getText();
         String message = "Click on the link below to reset your password. \r\n";
         String subject = "Reset Password";
-        String recipient = mail.getEmailTo();
         String body = message + " \r\n" + url;
-        return constructEmail(subject, body, recipient);
-    }
-
-    SimpleMailMessage constructEmail(String subject, String body, String mailTo) {
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setSubject(subject);
-        email.setText(body);
-        email.setTo(mailTo);
+        mail.setText(body);
+        mail.setSubject(subject);
         //TODO Implement properties table in database as well as a service to retrieve them
 //        email.setFrom(env.getProperty("support.email"));
-        email.setFrom("support@tyreshop24.com");
+        String hostEmail = "support@tyreshop24.com";
+        mail.setEmailFrom(hostEmail);
+        return constructSimpleMailMessage(mail);
+    }
+
+    SimpleMailMessage constructSimpleMailMessage(Mail mail) {
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setSubject(mail.getSubject());
+        email.setText(mail.getText());
+        email.setTo(mail.getEmailTo());
+        email.setFrom(mail.getEmailFrom());
         return email;
     }
 }
