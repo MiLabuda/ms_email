@@ -16,16 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MailController {
 
-    private MailService mailService;
-    private MailMapper mailMapper;
-
-    @PostMapping("/send")
-    public ResponseEntity<MailDTO> sendEmail(@RequestBody @Valid MailRequest request) {
-        Mail mail = mailService.createEmail(request);
-        mailService.sendEmail(mail);
-        MailDTO mailDTO = mailMapper.mailToMailDTO(mail);
-        return new ResponseEntity<>(mailDTO, HttpStatus.CREATED);
-    }
+    private final MailService mailService;
+    private final MailMapper mailMapper;
 
     @GetMapping()
     public ResponseEntity<Iterable<MailDTO>> getAll(@PageableDefault(size = 5) Pageable pageable) {
