@@ -10,20 +10,21 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 class TemplateServiceImpl {
 
-    SimpleMailMessage constructEmail(String baseUrl, String mailTo, EMailType mailType) {
-        return switch (mailType) {
+    SimpleMailMessage constructEmail(Mail mail) {
+        return switch (mail.getMailType()) {
             //TODO pass real token
-            case RESET_PASSWORD -> constructResetTokenEmail(baseUrl, "token", mailTo);
+            case RESET_PASSWORD -> constructResetTokenEmail(mail);
             case REGISTRATION_CONFIRMATION, CONTACT_US -> null;
         };
     }
 
-    SimpleMailMessage constructResetTokenEmail(String contextPath, String token, String mailTo) {
-        String url = contextPath + "/savePassword?token=" + token;
+    SimpleMailMessage constructResetTokenEmail(Mail mail) {
+        String url = mail.getBaseUrl() + "/savePassword?token=" + mail.getText();
         String message = "Click on the link below to reset your password. \r\n";
         String subject = "Reset Password";
+        String recipient = mail.getEmailTo();
         String body = message + " \r\n" + url;
-        return constructEmail(subject, body, mailTo);
+        return constructEmail(subject, body, recipient);
     }
 
     SimpleMailMessage constructEmail(String subject, String body, String mailTo) {

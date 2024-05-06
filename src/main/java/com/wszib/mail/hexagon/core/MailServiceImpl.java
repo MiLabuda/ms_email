@@ -28,7 +28,7 @@ public class MailServiceImpl implements MailService {
     @Override
     @Transactional
     public void sendEmail(Mail mail) {
-        SimpleMailMessage message = templateServiceImpl.constructEmail(mail.getBaseUrl(), mail.getEmailTo(), mail.getMailType());
+        SimpleMailMessage message = templateServiceImpl.constructEmail(mail);
         try {
             javaMailSender.send(message);
             mail.setStatusMail(StatusMail.SENT);
