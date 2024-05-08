@@ -1,4 +1,4 @@
-package com.wszib.mail.hexagon.core;
+package com.wszib.mail.config;
 
 import com.wszib.mail.adapters.driver.MailRequestMessage;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
