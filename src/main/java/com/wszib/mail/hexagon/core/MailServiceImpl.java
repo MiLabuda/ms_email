@@ -6,11 +6,11 @@ import com.wszib.mail.adapters.driver.MailRequestMessage;
 import com.wszib.mail.hexagon.ports.driver.MailService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

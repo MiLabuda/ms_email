@@ -2,8 +2,8 @@ package com.wszib.mail.hexagon.ports.driver;
 
 import com.wszib.mail.hexagon.core.Mail;
 import com.wszib.mail.adapters.driver.MailRequestMessage;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 public interface MailService {
