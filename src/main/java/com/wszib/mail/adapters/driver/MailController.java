@@ -20,12 +20,12 @@ public class MailController {
     @GetMapping()
     public ResponseEntity<Iterable<MailDTO>> getAll(@PageableDefault(size = 5) Pageable pageable) {
         List<MailDTO> mailDTOList = mailMapper.mailListToMailDTOList(mailService.findAll(pageable));
-        return new ResponseEntity<>(mailDTOList, HttpStatus.OK);
+        return ResponseEntity.ok(mailDTOList);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<MailDTO> getById(@PathVariable Long id) {
         MailDTO mailDTO = mailMapper.mailToMailDTO(mailService.findById(id));
-        return new ResponseEntity<>(mailDTO, HttpStatus.OK);
+        return ResponseEntity.ok(mailDTO);
     }
 }

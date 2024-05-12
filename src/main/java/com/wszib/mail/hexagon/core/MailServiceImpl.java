@@ -48,7 +48,7 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public List<Mail> findAll(Pageable pageable) {
-        return mailRepository.findAll();
+        return mailRepository.findAll(pageable).getContent();
     }
 
     @Override
