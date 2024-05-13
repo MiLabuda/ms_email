@@ -21,7 +21,6 @@ import java.util.List;
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
-    private final MailMapper mailMapper;
     private final MailRepository mailRepository;
     private final TemplateServiceImpl templateServiceImpl;
 
@@ -35,15 +34,13 @@ public class MailServiceImpl implements MailService {
         } catch (Exception e) {
             mail.setStatusMail(StatusMail.ERROR);
         }finally {
-            mail.setSendDateEmail(ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("UTC+0")));
-            mailRepository.save(mail);
+            save(mail);
         }
-
     }
 
-    @Override
-    public Mail createEmail(MailRequestMessage mailRequestMessage) {
-        return mailMapper.mailRequestToMail(mailRequestMessage);
+    private void save(Mail mail) {
+        mail.setSendDateEmail(ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("UTC+0")));
+        mailRepository.save(mail);
     }
 
     @Override

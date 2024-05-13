@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface MailService {
     void sendEmail(Mail mail);
-    Mail createEmail(MailRequestMessage mailRequestMessage);
     List<Mail> findAll(Pageable pageable);
     Mail findById(Long id);
 }
