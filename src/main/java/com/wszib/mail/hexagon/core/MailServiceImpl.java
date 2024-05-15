@@ -1,8 +1,8 @@
 package com.wszib.mail.hexagon.core;
 
-import com.wszib.mail.adapters.driven.MailRepository;
-import com.wszib.mail.adapters.driver.MailMapper;
-import com.wszib.mail.adapters.driver.MailRequestMessage;
+import com.wszib.mail.adapters.out.MailRepository;
+import com.wszib.mail.domain.Mail;
+import com.wszib.mail.domain.EStatusMail;
 import com.wszib.mail.hexagon.ports.driver.MailService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +30,9 @@ public class MailServiceImpl implements MailService {
         SimpleMailMessage message = templateServiceImpl.constructEmail(mail);
         try {
             javaMailSender.send(message);
-            mail.setStatusMail(StatusMail.SENT);
+            mail.setEStatusMail(EStatusMail.SENT);
         } catch (Exception e) {
-            mail.setStatusMail(StatusMail.ERROR);
+            mail.setEStatusMail(EStatusMail.ERROR);
         }finally {
             save(mail);
         }

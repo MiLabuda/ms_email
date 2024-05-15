@@ -1,4 +1,4 @@
-package com.wszib.mail.adapters.driver;
+package com.wszib.mail.adapters.in.web;
 
 import com.wszib.mail.hexagon.ports.driver.MailService;
 import lombok.RequiredArgsConstructor;
@@ -14,17 +14,17 @@ import java.util.List;
 public class MailController {
 
     private final MailService mailService;
-    private final MailMapper mailMapper;
+    private final MailWebMapper mailWebMapper;
 
     @GetMapping()
     public ResponseEntity<Iterable<MailDTO>> getAll(@PageableDefault(size = 5) Pageable pageable) {
-        List<MailDTO> mailDTOList = mailMapper.mailListToMailDTOList(mailService.findAll(pageable));
+        List<MailDTO> mailDTOList = mailWebMapper.mailListToMailDTOList(mailService.findAll(pageable));
         return ResponseEntity.ok(mailDTOList);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<MailDTO> getById(@PathVariable Long id) {
-        MailDTO mailDTO = mailMapper.mailToMailDTO(mailService.findById(id));
+        MailDTO mailDTO = mailWebMapper.mailToMailDTO(mailService.findById(id));
         return ResponseEntity.ok(mailDTO);
     }
 }

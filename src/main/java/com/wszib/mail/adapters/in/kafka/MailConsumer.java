@@ -1,8 +1,7 @@
-package com.wszib.mail.adapters.driver;
+package com.wszib.mail.adapters.in.kafka;
 
-import com.wszib.mail.hexagon.core.Mail;
+import com.wszib.mail.domain.Mail;
 import com.wszib.mail.hexagon.ports.driver.MailService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -22,7 +21,7 @@ public class MailConsumer {
             groupId = "default_id",
             containerFactory = "kafkaListenerContainerFactory")
     public void consumeMailRequest(MailRequestMessage mailRequestMessage,
-        @Header(KafkaHeaders.RECEIVED_KEY) String key){
+                                   @Header(KafkaHeaders.RECEIVED_KEY) String key){
         Mail mail = mailMapper.mailRequestToMail(mailRequestMessage);
         mailService.sendEmail(mail);
     }

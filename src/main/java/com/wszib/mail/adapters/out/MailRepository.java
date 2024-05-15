@@ -1,6 +1,6 @@
-package com.wszib.mail.adapters.driven;
+package com.wszib.mail.adapters.out;
 
-import com.wszib.mail.hexagon.core.Mail;
+import com.wszib.mail.domain.Mail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.wszib.mail.adapters.driver;
+package com.wszib.mail.domain;
 
 public enum EMailType {
     RESET_PASSWORD,

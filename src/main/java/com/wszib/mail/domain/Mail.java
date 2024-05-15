@@ -1,9 +1,7 @@
-package com.wszib.mail.hexagon.core;
+package com.wszib.mail.domain;
 
-import com.wszib.mail.adapters.driver.EMailType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import java.time.ZonedDateTime;
 
@@ -18,32 +16,27 @@ public class Mail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String emailFrom;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String emailTo;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String subject;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private String baseUrl;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     private ZonedDateTime sendDateEmail;
 
     @Enumerated(EnumType.STRING)
+    @NotBlank
     private EMailType mailType;
 
-    @NotNull
-    @NotEmpty
-    private StatusMail statusMail;
+    @NotBlank
+    private EStatusMail EStatusMail;
 
     @Transient
     private String text;

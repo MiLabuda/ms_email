@@ -1,7 +1,6 @@
 package com.wszib.mail.hexagon.ports.driver;
 
-import com.wszib.mail.hexagon.core.Mail;
-import com.wszib.mail.adapters.driver.MailRequestMessage;
+import com.wszib.mail.domain.Mail;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;

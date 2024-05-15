@@ -1,6 +1,6 @@
 package com.wszib.mail.config;
 
-import com.wszib.mail.adapters.driver.MailRequestMessage;
+import com.wszib.mail.adapters.in.kafka.MailRequestMessage;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

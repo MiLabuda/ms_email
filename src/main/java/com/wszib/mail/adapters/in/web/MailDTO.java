@@ -1,6 +1,6 @@
-package com.wszib.mail.adapters.driver;
+package com.wszib.mail.adapters.in.web;
 
-import com.wszib.mail.hexagon.core.StatusMail;
+import com.wszib.mail.domain.EStatusMail;
 
 import java.time.ZonedDateTime;
 
@@ -10,6 +10,6 @@ public record MailDTO(
         String emailTo,
         String subject,
         ZonedDateTime sendDateEmail,
-        StatusMail statusMail
+        EStatusMail EStatusMail
 ) {
 }

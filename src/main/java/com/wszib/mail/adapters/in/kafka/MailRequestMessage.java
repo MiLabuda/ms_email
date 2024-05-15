@@ -1,4 +1,4 @@
-package com.wszib.mail.adapters.driver;
+package com.wszib.mail.adapters.in.kafka;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Email;

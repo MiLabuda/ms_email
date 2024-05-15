@@ -2,6 +2,7 @@ package com.wszib.mail.hexagon.core;
 
 
 import com.wszib.mail.config.MailProperties;
+import com.wszib.mail.domain.Mail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
