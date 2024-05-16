@@ -1,4 +1,4 @@
-package com.wszib.mail.hexagon.core;
+package com.wszib.mail.infrastructure.utils;
 
 import java.util.Random;
 public final class IdGenerator {
