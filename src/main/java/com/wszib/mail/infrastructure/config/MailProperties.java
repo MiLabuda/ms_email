@@ -1,4 +1,4 @@
-package com.wszib.mail.config;
+package com.wszib.mail.infrastructure.config;
 
 import lombok.Getter;
 import lombok.Setter;
