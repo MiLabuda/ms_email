@@ -1,4 +1,4 @@
-package com.wszib.mail.config;
+package com.wszib.mail.infrastructure.config;
 
 import com.wszib.mail.adapters.in.kafka.MailRequestMessage;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
