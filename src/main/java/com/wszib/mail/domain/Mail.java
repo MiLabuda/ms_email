@@ -7,10 +7,7 @@ import java.time.ZonedDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "mails")
 public class Mail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
