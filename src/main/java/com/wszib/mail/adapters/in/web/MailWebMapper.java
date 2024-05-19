@@ -1,12 +1,17 @@
 package com.wszib.mail.adapters.in.web;
 
 import com.wszib.mail.domain.Mail;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class MailWebMapper {
+
+    Page<MailDTO> mailPageToMailDTOPage(Page<Mail> mailPage) {
+        return mailPage.map(this::mailToMailDTO);
+    }
 
     List<MailDTO> mailListToMailDTOList(List<Mail> mailList) {
         return mailList.stream()
@@ -20,8 +25,8 @@ public class MailWebMapper {
                 mail.getEmailFrom(),
                 mail.getEmailTo(),
                 mail.getSubject(),
-                mail.getSendDateEmail(),
-                mail.getEStatusMail()
+                mail.getCreatedAt(),
+                mail.getStatus()
         );
     }
 }

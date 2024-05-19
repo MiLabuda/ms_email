@@ -16,7 +16,7 @@ class TemplateServiceImpl {
     private final String HOST_MAIL = mailProperties.getHostMail();
 
     SimpleMailMessage constructEmail(Mail mail) {
-        return switch (mail.getMailType()) {
+        return switch (mail.getType()) {
             case RESET_PASSWORD -> constructResetTokenEmail(mail);
             case REGISTRATION_CONFIRMATION -> constructRegistrationConfirmationEmail(mail);
             case CONTACT_US -> null;

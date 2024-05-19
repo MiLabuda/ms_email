@@ -26,14 +26,14 @@ public class Mail {
     private String baseUrl;
 
     @NotBlank
-    private ZonedDateTime sendDateEmail;
+    private ZonedDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
     @NotBlank
-    private EMailType mailType;
+    private EMailType type;
 
     @NotBlank
-    private EStatusMail EStatusMail;
+    private EStatusMail status;
 
     @Transient
     private String text;

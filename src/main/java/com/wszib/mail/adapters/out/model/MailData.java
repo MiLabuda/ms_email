@@ -15,7 +15,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "mails")
-public class Mail {
+public class MailData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,12 +35,11 @@ public class Mail {
     @NotBlank
     private ZonedDateTime sendDateEmail;
 
-    @Enumerated(EnumType.STRING)
     @NotBlank
-    private EMailType mailType;
+    private String mailType;
 
     @NotBlank
-    private com.wszib.mail.adapters.out.model.EStatusMail EStatusMail;
+    private String status;
 
     @Transient
     private String text;
