@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Mail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

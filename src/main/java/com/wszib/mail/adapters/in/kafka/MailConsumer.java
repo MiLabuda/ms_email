@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class MailConsumer {
 
-    private final MailMapper mailMapper;
+    private final MailKafkaMapper mapper;
     private final SendMailUseCase sendMailUseCase;
 
     @KafkaListener(
@@ -21,7 +21,7 @@ public class MailConsumer {
             containerFactory = "kafkaListenerContainerFactory")
     public void consumeMailRequest(MailRequestMessage mailRequestMessage,
                                    @Header(KafkaHeaders.RECEIVED_KEY) String key){
-        Mail mail = mailMapper.mailRequestToMail(mailRequestMessage);
+        Mail mail = mapper.mailRequestToMail(mailRequestMessage);
         sendMailUseCase.sendEmail(mail);
     }
 }
