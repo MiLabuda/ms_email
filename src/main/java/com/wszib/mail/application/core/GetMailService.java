@@ -2,7 +2,7 @@ package com.wszib.mail.application.core;
 
 import com.wszib.mail.adapters.out.MailRepository;
 import com.wszib.mail.domain.Mail;
-import com.wszib.mail.application.ports.in.GetMailUseCase;
+import com.wszib.mail.application.ports.in.GetMailUseQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class GetMailService implements GetMailUseCase {
+public class GetMailService implements GetMailUseQuery {
 
     private final MailRepository mailRepository;
 

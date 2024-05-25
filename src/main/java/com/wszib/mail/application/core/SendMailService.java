@@ -1,6 +1,7 @@
 package com.wszib.mail.application.core;
 
 import com.wszib.mail.adapters.out.MailRepository;
+import com.wszib.mail.application.ports.in.SendMailCommand;
 import com.wszib.mail.domain.EStatusMail;
 import com.wszib.mail.domain.Mail;
 import com.wszib.mail.application.ports.in.SendMailUseCase;
@@ -24,7 +25,7 @@ public class SendMailService implements SendMailUseCase {
 
     @Override
     @Transactional
-    public void sendEmail(Mail mail) {
+    public void sendEmail(SendMailCommand mailCommand) {
         SimpleMailMessage message = templateServiceImpl.constructEmail(mail);
         try {
             javaMailSender.send(message);

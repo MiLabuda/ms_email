@@ -4,6 +4,6 @@ import com.wszib.mail.domain.Mail;
 
 public interface SendMailUseCase {
 
-    void sendEmail(Mail mail);
+    void sendEmail(SendMailCommand mailCommand);
 
 }
