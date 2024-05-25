@@ -1,4 +1,4 @@
-package com.wszib.mail.adapters.in.web;
+package com.wszib.mail.adapters.in.api;
 
 public enum EMailType {
     RESET_PASSWORD,

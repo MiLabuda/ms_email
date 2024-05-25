@@ -1,4 +1,4 @@
-package com.wszib.mail.adapters.in.web;
+package com.wszib.mail.adapters.in.api;
 
 import com.wszib.mail.application.ports.in.GetMailUseCase;
 import lombok.RequiredArgsConstructor;
@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/mail")
 @RequiredArgsConstructor
-public class MailController {
+class MailController {
 
     private final GetMailUseCase getMailUseCase;
     private final MailWebMapper mailWebMapper;
 
     @GetMapping()
-    public ResponseEntity<Iterable<MailDTO>> getAll(@PageableDefault(size = 5) Pageable pageable) {
+    Iterable<MailDTO> getAll(@PageableDefault(size = 5) Pageable pageable) {
         Page<MailDTO> mailDTOList = mailWebMapper.mailPageToMailDTOPage(getMailUseCase.findAll(pageable));
-        return ResponseEntity.ok(mailDTOList);
+        return mailDTOList.getContent();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MailDTO> getById(@PathVariable Long id) {
+    MailDTO getById(@PathVariable Long id) {
         MailDTO mailDTO = mailWebMapper.mailToMailDTO(getMailUseCase.findById(id));
-        return ResponseEntity.ok(mailDTO);
+        return mailDTO.of(getMailUseCase.findById(id));
     }
 }

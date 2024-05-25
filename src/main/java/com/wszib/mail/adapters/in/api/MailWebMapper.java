@@ -1,4 +1,4 @@
-package com.wszib.mail.adapters.in.web;
+package com.wszib.mail.adapters.in.api;
 
 import com.wszib.mail.domain.Mail;
 import org.springframework.data.domain.Page;
