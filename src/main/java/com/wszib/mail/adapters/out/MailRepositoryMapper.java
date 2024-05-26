@@ -1,8 +1,6 @@
 package com.wszib.mail.adapters.out;
 
 import com.wszib.mail.adapters.out.model.MailData;
-import com.wszib.mail.domain.EMailType;
-import com.wszib.mail.domain.EStatusMail;
 import com.wszib.mail.domain.Mail;
 import com.wszib.mail.infrastructure.exceptions.MailNotFoundException;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,5 @@
 package com.wszib.mail.adapters.in.api;
 
-import com.wszib.mail.domain.EStatusMail;
 import com.wszib.mail.domain.Mail;
 
 import java.time.ZonedDateTime;
@@ -11,7 +10,7 @@ public record MailDTO(
         String emailTo,
         String subject,
         ZonedDateTime sendDateEmail,
-        EStatusMail EStatusMail
+        StatusMail EStatusMail
 ) {
     MailDTO of(Mail mail){
         return new MailDTO(

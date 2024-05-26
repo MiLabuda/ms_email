@@ -1,6 +1,5 @@
 package com.wszib.mail.adapters.in.kafka;
 
-import com.wszib.mail.domain.EMailType;
 import com.wszib.mail.domain.Mail;
 import com.wszib.mail.infrastructure.config.MailProperties;
 import com.wszib.mail.infrastructure.utils.IdGenerator;

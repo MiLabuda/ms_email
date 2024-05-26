@@ -8,10 +8,20 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class Mail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    enum StatusMail {
+        SENT,
+        ERROR,
+        PENDING
+    }
+
+    enum MailType {
+        RESET_PASSWORD,
+        REGISTRATION_CONFIRMATION,
+        CONTACT_US
+    }
+
     private Long id;
 
     @NotBlank
@@ -31,11 +41,10 @@ public class Mail {
 
     @Enumerated(EnumType.STRING)
     @NotBlank
-    private EMailType type;
+    private MailType type;
 
     @NotBlank
-    private EStatusMail status;
+    private StatusMail status;
 
-    @Transient
     private String text;
 }

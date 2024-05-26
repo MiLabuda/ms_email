@@ -1,7 +1,6 @@
 package com.wszib.mail.application.core;
 
 import com.wszib.mail.adapters.out.SaveMailAdapter;
-import com.wszib.mail.domain.EStatusMail;
 import com.wszib.mail.domain.Mail;
 import com.wszib.mail.application.ports.in.SendMailUseCase;
 import jakarta.transaction.Transactional;
