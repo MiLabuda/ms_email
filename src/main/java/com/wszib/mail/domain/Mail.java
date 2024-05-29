@@ -10,13 +10,13 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 public class Mail {
 
-    enum StatusMail {
+    public enum StatusMail {
         SENT,
         ERROR,
         PENDING
     }
 
-    enum MailType {
+    public enum MailType {
         RESET_PASSWORD,
         REGISTRATION_CONFIRMATION,
         CONTACT_US
@@ -47,4 +47,6 @@ public class Mail {
     private StatusMail status;
 
     private String text;
+
+
 }

@@ -32,6 +32,7 @@ class TemplateServiceImpl {
         mail.setText(body);
         mail.setSubject(subject);
         mail.setEmailFrom(HOST_MAIL);
+        mail.setStatus(Mail.StatusMail.PENDING);
         return constructSimpleMailMessage(mail);
     }
 
@@ -43,6 +44,7 @@ class TemplateServiceImpl {
         mail.setText(message);
         mail.setSubject(subject);
         mail.setEmailFrom(HOST_MAIL);
+        mail.setStatus(Mail.StatusMail.PENDING);
         return constructSimpleMailMessage(mail);
     }
 
