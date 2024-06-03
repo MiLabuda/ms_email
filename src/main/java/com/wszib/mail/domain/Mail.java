@@ -23,12 +23,8 @@ public class Mail {
     }
 
     private MailId id;
-
-    @NotBlank
-    private String emailFrom;
-
-    @NotBlank
-    private String emailTo;
+    private Email from;
+    private Email to;
 
     @NotBlank
     private String subject;
