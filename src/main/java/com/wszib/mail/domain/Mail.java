@@ -22,7 +22,7 @@ public class Mail {
         CONTACT_US
     }
 
-    private Long id;
+    private MailId id;
 
     @NotBlank
     private String emailFrom;
