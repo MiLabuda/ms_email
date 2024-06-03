@@ -7,7 +7,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 final class MailId {
-    private final @NonNull String id;
+    private final String id;
 
     public MailId(@NonNull Object id) {
         var idValue = id.toString().strip();
