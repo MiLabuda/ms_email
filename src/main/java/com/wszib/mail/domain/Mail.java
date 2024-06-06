@@ -5,33 +5,25 @@ import lombok.*;
 import java.time.ZonedDateTime;
 
 @Getter
-@Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Mail {
 
-    public enum StatusMail {
-        SENT,
-        ERROR,
-        PENDING
-    }
-
-    private MailId id;
-    private Email from;
-    private Email to;
+    private final MailId id;
+    private final Email from;
+    private final Email to;
 
     @NotBlank
-    private String subject;
+    private final String subject;
 
     @NotBlank
-    private String baseUrl;
+    private final String baseUrl;
 
     @NotBlank
-    private ZonedDateTime createdAt;
+    private final ZonedDateTime createdAt;
 
-    private MailType type;
+    private final MailType type;
 
-    @NotBlank
-    private StatusMail status;
+    private final StatusMail status;
 
-    private String text;
+    private final String text;
 }
