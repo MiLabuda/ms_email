@@ -1,6 +1,5 @@
 package com.wszib.mail.domain;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import java.time.ZonedDateTime;
@@ -16,12 +15,6 @@ public class Mail {
         PENDING
     }
 
-    public enum MailType {
-        RESET_PASSWORD,
-        REGISTRATION_CONFIRMATION,
-        CONTACT_US
-    }
-
     private MailId id;
     private Email from;
     private Email to;
@@ -35,14 +28,10 @@ public class Mail {
     @NotBlank
     private ZonedDateTime createdAt;
 
-    @Enumerated(EnumType.STRING)
-    @NotBlank
     private MailType type;
 
     @NotBlank
     private StatusMail status;
 
     private String text;
-
-
 }
