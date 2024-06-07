@@ -9,10 +9,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-
 @Service
 @RequiredArgsConstructor
 public class SendMailService implements SendMailUseCase {
@@ -27,16 +23,16 @@ public class SendMailService implements SendMailUseCase {
         SimpleMailMessage message = templateServiceImpl.constructEmail(mail);
         try {
             javaMailSender.send(message);
-            mail.setStatus(EStatusMail.SENT);
+            mail.markAsSent();
         } catch (Exception e) {
-            mail.setStatus(EStatusMail.ERROR);
-        }finally {
-            save(mail);
+            mail.markAsError();
         }
+        save(mail);
+
     }
 
-    private void save(Mail mail) {
-        mail.setCreatedAt(ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("UTC+0")));
+    public void save(Mail mail) {
+        mail.setCreationDateAsNow();
         saveMailAdapter.save(mail);
     }
 }
