@@ -1,25 +1,19 @@
 package com.wszib.mail.adapters.in.kafka;
 
-import com.wszib.mail.domain.Mail;
-import com.wszib.mail.infrastructure.config.MailProperties;
-import com.wszib.mail.infrastructure.utils.IdGenerator;
-import lombok.RequiredArgsConstructor;
+import com.wszib.mail.application.commands.EMailType;
+import com.wszib.mail.application.commands.MessageValue;
+import com.wszib.mail.application.commands.SendMailCommand;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
-public class MailKafkaMapper {
+class MailKafkaMapper {
 
-    private final MailProperties mailProperties;
-
-    public Mail mailRequestToMail(MailRequestMessage mailRequestMessage) {
-            Mail mail = new Mail();
-            mail.setId(IdGenerator.generateId());
-            mail.setEmailFrom(mailProperties.getHostMail());
-            mail.setEmailTo(mailRequestMessage.emailTo());
-            mail.setType(EMailType.valueOf(String.valueOf(mailRequestMessage.mailType())));
-
-            return mail;
-        }
-
+    SendMailCommand mailRequestToCommand(MailRequestMessage mailRequestMessage) {
+        return new SendMailCommand(
+                mailRequestMessage.emailTo(),
+                new MessageValue(mailRequestMessage.message()),
+                mailRequestMessage.baseUrl(),
+                EMailType.valueOf(mailRequestMessage.mailType())
+        );
+    }
 }

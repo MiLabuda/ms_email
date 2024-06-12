@@ -6,8 +6,8 @@ import jakarta.validation.constraints.Email;
 
 public record MailRequestMessage(
         @NotBlank @Email String emailTo,
-        @NotBlank String text,
+        @NotBlank String message,
         @NotBlank String baseUrl,
-        @NotBlank EMailType mailType
+        @NotBlank String mailType
 ) {
 }
