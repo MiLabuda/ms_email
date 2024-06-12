@@ -1,9 +1,9 @@
 package com.wszib.mail.application.ports.in;
 
-import com.wszib.mail.domain.Mail;
+import com.wszib.mail.application.commands.SendMailCommand;
 
 public interface SendMailUseCase {
 
-    void sendEmail(Mail mail);
+    void sendEmail(SendMailCommand mailCommand);
 
 }
