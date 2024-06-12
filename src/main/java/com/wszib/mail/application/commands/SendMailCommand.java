@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public record SendMailCommand(
         @NotBlank @Email String emailTo,
+        @NotBlank @Email String emailFrom,
         @NotBlank MessageValue message,
         @NotBlank String baseUrl,
         @NotBlank EMailType mailType
