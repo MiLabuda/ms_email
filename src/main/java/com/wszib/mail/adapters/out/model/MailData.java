@@ -40,7 +40,4 @@ public class MailData {
 
     @NotBlank
     private String status;
-
-    @Transient
-    private String text;
 }
