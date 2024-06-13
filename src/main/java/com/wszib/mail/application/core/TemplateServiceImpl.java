@@ -11,53 +11,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 class TemplateServiceImpl {
 
-    private final MailProperties mailProperties;
-
-    private final String HOST_MAIL = mailProperties.getHostMail();
-
-    SimpleMailMessage constructEmail(Mail mail) {
-        return switch (mail.getType()) {
-            case RESET_PASSWORD -> constructResetTokenEmail(mail);
-            case REGISTRATION_CONFIRMATION -> constructRegistrationConfirmationEmail(mail);
-            case CONTACT_US -> null;
-        };
-    }
-
-    SimpleMailMessage constructResetTokenEmail(Mail mail) {
-        String url = mail.getBaseUrl() + "/savePassword?token=" + mail.getText();
-        String message = "Click on the link below to reset your password. \r\n";
-        String subject = "Reset Password";
-        String body = message + " \r\n" + url;
-
-        mail.setText(body);
-        mail.setSubject(subject);
-        mail.setEmailFrom(HOST_MAIL);
-        mail.setStatus(Mail.StatusMail.PENDING);
-        return constructSimpleMailMessage(mail);
-    }
-
-    SimpleMailMessage constructRegistrationConfirmationEmail(Mail mail) {
-        String url = mail.getBaseUrl() + "/auth/confirm?token=" + mail.getText();
-        String message = buildEmail(mail.getEmailTo(), url);
-        String subject = "Confirm registration";
-
-        mail.setText(message);
-        mail.setSubject(subject);
-        mail.setEmailFrom(HOST_MAIL);
-        mail.setStatus(Mail.StatusMail.PENDING);
-        return constructSimpleMailMessage(mail);
-    }
-
-    SimpleMailMessage constructSimpleMailMessage(Mail mail) {
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setSubject(mail.getSubject());
-        email.setText(mail.getText());
-        email.setTo(mail.getEmailTo());
-        email.setFrom(mail.getEmailFrom());
-        return email;
-    }
-
-
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
                 "\n" +
