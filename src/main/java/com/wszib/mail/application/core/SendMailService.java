@@ -1,6 +1,8 @@
 package com.wszib.mail.application.core;
 
 import com.wszib.mail.adapters.out.SaveMailAdapter;
+import com.wszib.mail.application.commands.SendMailCommand;
+import com.wszib.mail.domain.IMailFactory;
 import com.wszib.mail.domain.Mail;
 import com.wszib.mail.application.ports.in.SendMailUseCase;
 import jakarta.transaction.Transactional;
@@ -14,13 +16,15 @@ import org.springframework.stereotype.Service;
 public class SendMailService implements SendMailUseCase {
 
     private final JavaMailSender javaMailSender;
-    private final TemplateServiceImpl templateServiceImpl;
     private final SaveMailAdapter saveMailAdapter;
+    private final IMailFactory mailFactory;
 
     @Override
     @Transactional
-    public void sendEmail(Mail mail) {
-        SimpleMailMessage message = templateServiceImpl.constructEmail(mail);
+    public void sendEmail(SendMailCommand mailCommand) {
+        Mail mail = mailFactory.createMail(mailCommand);
+
+        SimpleMailMessage message = mail.toSimpleMailMessage();
         try {
             javaMailSender.send(message);
             mail.markAsSent();

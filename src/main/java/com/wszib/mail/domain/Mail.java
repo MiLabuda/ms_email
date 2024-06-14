@@ -1,14 +1,13 @@
 package com.wszib.mail.domain;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.springframework.mail.SimpleMailMessage;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @Getter
-@RequiredArgsConstructor
 public class Mail {
 
     private final MailId id;
@@ -19,7 +18,18 @@ public class Mail {
     private ZonedDateTime createdAt;
     private final MailType type;
     private StatusMail status;
-    private final String text;
+    private final String body;
+
+    Mail(MailId mailId, Email emailFrom, Email emailTo, Subject subject, Url hostUrl, MailType mailType, StatusMail statusMail, String body) {
+        this.id = mailId;
+        this.from = emailFrom;
+        this.to = emailTo;
+        this.subject = subject;
+        this.hostUrl = hostUrl;
+        this.type = mailType;
+        this.status = statusMail;
+        this.body = body;
+    }
 
     public void markAsSent() {
         this.status = StatusMail.SENT;
@@ -36,5 +46,15 @@ public class Mail {
     public void setCreationDateAsNow() {
         this.createdAt = ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("UTC+0"));
     }
+
+    public SimpleMailMessage toSimpleMailMessage() {
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setSubject(subject.getValue());
+        email.setText(body);
+        email.setTo(to.value());
+        email.setFrom(from.value());
+        return email;
+    }
+
 
 }
