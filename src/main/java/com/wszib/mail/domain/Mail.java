@@ -49,7 +49,7 @@ public class Mail {
 
     public SimpleMailMessage toSimpleMailMessage() {
         SimpleMailMessage email = new SimpleMailMessage();
-        email.setSubject(subject.getValue());
+        email.setSubject(subject.value());
         email.setText(body);
         email.setTo(to.value());
         email.setFrom(from.value());

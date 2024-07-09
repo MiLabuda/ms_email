@@ -1,10 +1,7 @@
 package com.wszib.mail.domain;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
 import lombok.NonNull;
 
-@Getter
 public class Subject {
 
     private final String value;
@@ -18,4 +15,9 @@ public class Subject {
         }
         this.value = value;
     }
+
+    public String value() {
+        return value;
+    }
+
 }

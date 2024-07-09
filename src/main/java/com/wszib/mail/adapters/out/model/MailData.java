@@ -17,8 +17,7 @@ import java.time.ZonedDateTime;
 @Table(name = "mails")
 public class MailData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @NotBlank
     private String emailFrom;

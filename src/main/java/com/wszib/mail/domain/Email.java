@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 @EqualsAndHashCode
 @ToString
-final class Email {
+public final class Email {
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     private final String email;

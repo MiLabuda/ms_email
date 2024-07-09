@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @EqualsAndHashCode
 @ToString
-final class MailId {
+public final class MailId {
     private final String id;
 
     public MailId(@NonNull Object id) {
