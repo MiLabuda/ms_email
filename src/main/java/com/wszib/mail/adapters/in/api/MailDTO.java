@@ -5,21 +5,21 @@ import com.wszib.mail.domain.Mail;
 import java.time.ZonedDateTime;
 
 public record MailDTO(
-        Long id,
+        String id,
         String emailFrom,
         String emailTo,
         String subject,
         ZonedDateTime sendDateEmail,
-        StatusMail EStatusMail
+        String EStatusMail
 ) {
     MailDTO of(Mail mail){
         return new MailDTO(
-                mail.getId(),
-                mail.getEmailFrom(),
-                mail.getEmailTo(),
-                mail.getSubject(),
+                mail.getId().value(),
+                mail.getFrom().value(),
+                mail.getTo().value(),
+                mail.getSubject().value(),
                 mail.getCreatedAt(),
-                mail.getStatus()
+                mail.getStatus().value()
         );
     }
 }
