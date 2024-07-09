@@ -1,6 +1,7 @@
 package com.wszib.mail.application.core;
 
 import com.wszib.mail.adapters.out.GetMailAdapter;
+import com.wszib.mail.application.commands.MailQueryModel;
 import com.wszib.mail.application.ports.in.GetMailUseCase;
 import com.wszib.mail.domain.Mail;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +17,12 @@ public class GetMailService implements GetMailUseCase {
     private final GetMailAdapter getMailAdapter;
 
     @Override
-    public Page<Mail> findAll(Pageable pageable) {
+    public Page<MailQueryModel> findAll(Pageable pageable) {
         return getMailAdapter.findAll(pageable);
     }
 
     @Override
-    public Mail findById(Long id) {
+    public MailQueryModel findById(Long id) {
         return getMailAdapter.findById(id);
     }
 }

@@ -1,12 +1,12 @@
 package com.wszib.mail.application.ports.out;
 
-import com.wszib.mail.domain.Mail;
+import com.wszib.mail.application.commands.MailQueryModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
 public interface GetMailPort {
 
-    Mail findById(Long id);
-    Page<Mail> findAll(Pageable pageable);
+    MailQueryModel findById(Long id);
+    Page<MailQueryModel> findAll(Pageable pageable);
 }
