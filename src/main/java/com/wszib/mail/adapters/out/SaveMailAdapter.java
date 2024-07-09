@@ -13,7 +13,6 @@ public class SaveMailAdapter implements SaveMailPort {
     private final MailRepositoryMapper mapper;
 
     public void save(Mail mail) {
-
         MailData mailData = mapper.mapToJpaEntity(mail);
         mailRepository.save(mailData);
     }

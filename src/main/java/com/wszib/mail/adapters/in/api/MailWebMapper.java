@@ -21,12 +21,12 @@ public class MailWebMapper {
 
     MailDTO mailToMailDTO(Mail mail) {
         return new MailDTO(
-                mail.getId(),
-                mail.getEmailFrom(),
-                mail.getEmailTo(),
-                mail.getSubject(),
+                mail.getId().value(),
+                mail.getFrom().value(),
+                mail.getTo().value(),
+                mail.getSubject().value(),
                 mail.getCreatedAt(),
-                mail.getStatus()
+                mail.getStatus().getValue()
         );
     }
 }
