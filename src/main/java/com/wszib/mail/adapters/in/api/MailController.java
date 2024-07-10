@@ -27,7 +27,7 @@ class MailController {
 
     @GetMapping("/{id}")
     MailDTO getById(@PathVariable Long id) {
-        MailDTO mailDTO = mailWebMapper.mailToMailDTO(getMailUseCase.findById(id));
+        MailDTO mailDTO = mailWebMapper.mailQueryModelToMailDTO(getMailUseCase.findById(id));
         return mailDTO.of(getMailUseCase.findById(id));
     }
 }
