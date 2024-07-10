@@ -1,25 +1,25 @@
 package com.wszib.mail.adapters.in.api;
 
-import com.wszib.mail.domain.Mail;
+import com.wszib.mail.application.commands.MailQueryModel;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 public record MailDTO(
         String id,
         String emailFrom,
         String emailTo,
         String subject,
-        ZonedDateTime sendDateEmail,
+        Instant sendDateEmail,
         String EStatusMail
 ) {
-    MailDTO of(Mail mail){
+    MailDTO of(MailQueryModel mailQueryModel){
         return new MailDTO(
-                mail.getId().value(),
-                mail.getFrom().value(),
-                mail.getTo().value(),
-                mail.getSubject().value(),
-                mail.getCreatedAt(),
-                mail.getStatus().value()
+                mailQueryModel.id(),
+                mailQueryModel.emailFrom(),
+                mailQueryModel.emailTo(),
+                mailQueryModel.subject(),
+                mailQueryModel.createdAt(),
+                mailQueryModel.status()
         );
     }
 }

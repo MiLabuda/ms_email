@@ -1,13 +1,11 @@
 package com.wszib.mail.domain;
 
 import com.wszib.mail.application.commands.SendMailCommand;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
-@RequiredArgsConstructor
 class MailFactory implements IMailFactory {
 
     public static final String MAIL_TYPE_RESET_PASSWORD = "Reset Password";
@@ -19,10 +17,14 @@ class MailFactory implements IMailFactory {
 
     ITemplateGenerator mailTemplateGenerator;
 
+    MailFactory(ITemplateGenerator mailTemplateGenerator) {
+        this.mailTemplateGenerator = mailTemplateGenerator;
+    }
+
     @Override
     public Mail createMail(SendMailCommand command) {
         return switch (command.mailType()) {
-            case  MAIL_TYPE_RESET_PASSWORD-> createResetPasswordMail(command);
+            case MAIL_TYPE_RESET_PASSWORD-> createResetPasswordMail(command);
             case MAIL_TYPE_CONFIRM_REGISTRATION -> createRegistrationConfirmationMail(command);
             // add more cases as needed
             default -> throw new IllegalArgumentException("Unsupported mail type: " + command.mailType());

@@ -1,6 +1,6 @@
 package com.wszib.mail.application.commands;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 class SaveMailCommand {
     private String id;
@@ -8,7 +8,7 @@ class SaveMailCommand {
     private String emailTo;
     private String subject;
     private String baseUrl;
-    private ZonedDateTime sendDateEmail;
+    private Instant sendDateEmail;
     private String mailType;
     private String status;
 }

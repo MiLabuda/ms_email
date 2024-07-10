@@ -4,8 +4,6 @@ import lombok.*;
 import org.springframework.mail.SimpleMailMessage;
 
 import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 @Getter
 public class Mail {
@@ -15,7 +13,7 @@ public class Mail {
     private final Email to;
     private final Subject subject;
     private final Url hostUrl;
-    private ZonedDateTime createdAt;
+    private Instant createdAt;
     private final MailType type;
     private StatusMail status;
     private final String body;
@@ -44,7 +42,7 @@ public class Mail {
     }
 
     public void setCreationDateAsNow() {
-        this.createdAt = ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("UTC+0"));
+        this.createdAt = Instant.now();
     }
 
     public SimpleMailMessage toSimpleMailMessage() {

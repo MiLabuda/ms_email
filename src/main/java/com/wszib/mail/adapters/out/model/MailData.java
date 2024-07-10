@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -32,7 +32,7 @@ public class MailData {
     private String baseUrl;
 
     @NotBlank
-    private ZonedDateTime sendDateEmail;
+    private Instant sendDateEmail;
 
     @NotBlank
     private String mailType;

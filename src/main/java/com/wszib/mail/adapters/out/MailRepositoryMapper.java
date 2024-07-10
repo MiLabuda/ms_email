@@ -26,11 +26,11 @@ public class MailRepositoryMapper {
                 mail.getId().value(),
                 mail.getFrom().value(),
                 mail.getTo().value(),
-                mail.getSubject().getValue(),
+                mail.getSubject().value(),
                 mail.getHostUrl().getValue(),
                 mail.getCreatedAt(),
                 mail.getType().getValue(),
-                mail.getStatus().getValue());
+                mail.getStatus().value());
     }
 
 }

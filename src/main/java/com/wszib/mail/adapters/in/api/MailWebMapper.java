@@ -1,6 +1,6 @@
 package com.wszib.mail.adapters.in.api;
 
-import com.wszib.mail.domain.Mail;
+import com.wszib.mail.application.commands.MailQueryModel;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -9,24 +9,24 @@ import java.util.List;
 @Component
 public class MailWebMapper {
 
-    Page<MailDTO> mailPageToMailDTOPage(Page<Mail> mailPage) {
-        return mailPage.map(this::mailToMailDTO);
+    Page<MailDTO> mailPageToMailDTOPage(Page<MailQueryModel> mailPage) {
+        return mailPage.map(this::mailQueryModelToMailDTO);
     }
 
-    List<MailDTO> mailListToMailDTOList(List<Mail> mailList) {
+    List<MailDTO> mailListToMailDTOList(List<MailQueryModel> mailList) {
         return mailList.stream()
-                .map(this::mailToMailDTO)
+                .map(this::mailQueryModelToMailDTO)
                 .toList();
     }
 
-    MailDTO mailToMailDTO(Mail mail) {
+    MailDTO mailQueryModelToMailDTO(MailQueryModel mailQueryModel) {
         return new MailDTO(
-                mail.getId().value(),
-                mail.getFrom().value(),
-                mail.getTo().value(),
-                mail.getSubject().value(),
-                mail.getCreatedAt(),
-                mail.getStatus().getValue()
+                mailQueryModel.id(),
+                mailQueryModel.emailFrom(),
+                mailQueryModel.emailTo(),
+                mailQueryModel.subject(),
+                mailQueryModel.createdAt(),
+                mailQueryModel.status()
         );
     }
 }
